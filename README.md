@@ -1,12 +1,14 @@
 # MMM-HomeAutomationNotifications
 
-A [MagicMirror²](https://github.com/MichMich/MagicMirror) module to display home automation notifications, such as from Hubitat Elevation. However the module is generic enough to use for any kind of notification you want to display. Notifications are sent to the module using a simple HTTP POST call.
+A [MagicMirror²](https://github.com/MichMich/MagicMirror) module to display home automation notifications. Notifications are sent to the module using a simple HTTP POST call.
 
 Based on the [MMM-syslog](https://github.com/paviro/MMM-syslog) module by Paul-Vincent Roll (paviro).
 
+This module is the counterpart to my [Hubitat Elevation](https://hubitat.com) notification driver named [HTTP Notifications](https://github.com/john3300/Hubitat-HTTPNotifications) for sending notifications. However the implementation is not specific to Hubitat and can be used for any kind of notification.
+
 ## Screenshots
 
-![](screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Installation
 
