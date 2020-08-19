@@ -82,7 +82,7 @@ Module.register("MMM-HomeAutomationNotifications", {
 			row.classList.add("normal");
 
 			var iconCell = document.createElement("td");
-			iconCell.classList.add("medium");
+			iconCell.classList.add("small");
 
 			var icon = document.createElement("i");
 			if (this.config.icons.hasOwnProperty(this.notifications[i].type)) {
@@ -100,7 +100,7 @@ Module.register("MMM-HomeAutomationNotifications", {
 
 			var caller =  document.createElement("td");
 			caller.innerHTML = " " + this.notifications[i].message;
-			caller.classList.add("title", "medium", "align-left");
+			caller.classList.add("title", "small", "align-left");
 			if (this.config.types.hasOwnProperty(this.notifications[i].type)){
 				caller.classList.add(this.config.types[this.notifications[i].type]);
 			}
@@ -108,7 +108,7 @@ Module.register("MMM-HomeAutomationNotifications", {
 
 			var time = document.createElement("td");
 			time.innerHTML = moment(this.notifications[i].timestamp).fromNow();
-			time.classList.add("time", "light", "small", "align-right");
+			time.classList.add("time", "light", "xsmall", "align-right");
 			row.appendChild(time);
 
 			table.appendChild(row);
