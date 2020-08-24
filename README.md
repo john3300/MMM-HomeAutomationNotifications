@@ -43,7 +43,7 @@ Notifications can be sent to the module with an HTTP POST request to this URL:
 `message` must be URL encoded if it contains any special characters such as a space.
 
 Example request:
-`POST http://magicmirror:8080/MMM-HomeAutomationNotifications?type=WARNING&message=Front%20door%unlocked`
+`POST http://magicmirror:8080/MMM-HomeAutomationNotifications?type=WARNING&message=Front%20door%20unlocked`
 
 ## Configuration options
 
