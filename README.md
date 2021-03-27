@@ -45,6 +45,14 @@ Notifications can be sent to the module with an HTTP POST request to this URL:
 Example request:
 `POST http://magicmirror:8080/MMM-HomeAutomationNotifications?type=WARNING&message=Front%20door%20unlocked`
 
+The server will respond to the request with an ID value for the notification that was created. This value can be used in subsequent requests to update or delete the notification.
+
+A notification can be updated with an HTTP PUT request to this URL:
+`PUT http://<SERVER-ADDRESS>:<PORT>/MMM-HomeAutomationNotifications?id=<ID>&type=<TYPE>&message=<MESSAGE>`
+
+A notificaiton can be deleted with an HTTP DELETE request to this URL:
+`DELETE http://<SERVER-ADDRESS>:<PORT>/MMM-HomeAutomationNotifications?id=<ID>`
+
 ## Configuration options
 
 The following properties can be configured:
