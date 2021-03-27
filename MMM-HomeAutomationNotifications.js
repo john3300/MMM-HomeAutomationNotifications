@@ -10,6 +10,7 @@ Module.register("MMM-HomeAutomationNotifications", {
 	requiresVersion: "2.12.0",
 
 	notifications: [],
+	id: 1,
 
 	defaults: {
 		max: 5,
@@ -48,23 +49,54 @@ Module.register("MMM-HomeAutomationNotifications", {
 
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;
+		var timestamp = moment();
+		var duration = moment.duration(this.config.duration, "m");
 
 		if (notification === "HOME_AUTOMATION_NOTIFICATION") {
-			var timestamp = moment();
-			var duration = moment.duration(this.config.duration, "m");
+			var id = self.generateId();
+
 			self.notifications.push({
+				id: id,
 				type: payload.type,
 				message: payload.message,
 				timestamp: timestamp.toISOString(),
 				expiration: timestamp.add(duration).toISOString()
 			});		
-
+	
 			while (self.notifications.length > self.config.max) {
 				self.notifications.shift();
 			}
 
-			self.updateDom(self.config.animationSpeed);
+			self.sendSocketNotification("HOME_AUTOMATION_NOTIFICATION_ID", id);
+		} else if (notification === "HOME_AUTOMATION_NOTIFICATION_UPDATE") {
+			var i = self.notifications.findIndex(x => x.id === payload.id);
+			self.notifications[i] = {
+				id: payload.id,
+				type: payload.type,
+				message: payload.message,
+				timestamp: timestamp.toISOString(),
+				expiration: timestamp.add(duration).toISOString()
+			};
+		} else if (notification === "HOME_AUTOMATION_NOTIFICATION_DELETE") {
+			for (i = self.notifications.length - 1; i >= 0; i--) {
+				if (self.notifications[i].id == payload.id) {
+					self.notifications.splice(i, 1);
+				}
+			}
 		}
+
+		self.updateDom(self.config.animationSpeed);
+	},
+
+	generateId: function() {
+		var self = this;
+
+		var id = self.id++;
+		if (self.id > 100) {
+			self.id = 1;
+		}
+
+		return id;
 	},
 
 	getDom: function() {
