@@ -20,7 +20,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 ``` js
 modules: [
     {
-        module: "MMM-HomeAutomationNotfications",
+        module: "MMM-HomeAutomationNotifications",
         position: "bottom_bar",	// This can be any of the regions.
         config: {
             // The config property is optional.
