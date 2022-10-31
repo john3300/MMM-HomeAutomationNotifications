@@ -69,32 +69,36 @@ module.exports = NodeHelper.create({
     });
 
     self.expressApp.put("/MMM-HomeAutomationNotifications", (req, res) => {
-      if (!req.query.id) {
+			const id = req.jsonBody ? req.jsonBody.id : req.query.id
+			const type = req.jsonBody ? req.jsonBody.type : req.query.type
+			const message = req.jsonBody ? req.jsonBody.message : req.query.message
+      if (!id) {
         res.status(400).json({ error: "Query parameter id is required!" });
-      } else if (!req.query.type) {
+      } else if (!type) {
         res.status(400).json({ error: "Query parameter type is required!" });
-      } else if (!types.includes(req.query.type)) {
+      } else if (!types.includes(type)) {
         res
           .status(400)
           .json({ error: "Query parameter type value is invalid!" });
-      } else if (!req.query.message) {
+      } else if (!message) {
         res.status(400).json({ error: "Query parameter message is required!" });
       } else {
         self.sendSocketNotification("HOME_AUTOMATION_NOTIFICATION_UPDATE", {
-          id: req.query.id,
-          type: req.query.type,
-          message: req.query.message
+          id: id,
+          type: type,
+          message: message
         });
         res.status(204).end();
       }
     });
 
     self.expressApp.delete("/MMM-HomeAutomationNotifications", (req, res) => {
-      if (!req.query.id) {
+			const id = req.jsonBody ? req.jsonBody.id : req.query.id
+      if (!id) {
         res.status(400).json({ error: "Query parameter id is required!" });
       } else {
         self.sendSocketNotification("HOME_AUTOMATION_NOTIFICATION_DELETE", {
-          id: req.query.id
+          id: id
         });
         res.status(204).end();
       }
