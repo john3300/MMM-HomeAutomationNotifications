@@ -45,6 +45,7 @@ module.exports = NodeHelper.create({
     self.expressApp.post("/MMM-HomeAutomationNotifications", (req, res) => {
       const type = req.jsonBody ? req.jsonBody.type : req.query.type;
       const message = req.jsonBody ? req.jsonBody.message : req.query.message;
+			const id = req.jsonBody ? req.jsonBody.id : req.query.id;
       if (!type) {
         res.status(400).json({ error: "Query parameter type is required!" });
       } else if (!types.includes(type)) {
@@ -58,7 +59,8 @@ module.exports = NodeHelper.create({
           self.idPromise = resolve;
           self.sendSocketNotification("HOME_AUTOMATION_NOTIFICATION", {
             type: type,
-            message: message
+            message: message,
+						id: id
           });
         }).then((id) => {
           res.status(201).json({ id: id });

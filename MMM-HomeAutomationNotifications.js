@@ -53,9 +53,11 @@ Module.register("MMM-HomeAutomationNotifications", {
 		var duration = this.config.duration === -1 ? moment.duration(100, "y") : moment.duration(this.config.duration, "m");
 
 		if (notification === "HOME_AUTOMATION_NOTIFICATION") {
-			var id = self.generateId();
+			const id = payload.id ? payload.id : self.generateId();
+			if (payload.id) {
+				self.id = payload.id + 1
+			}
 
-			console.log(timestamp.add(duration).toISOString())
 			self.notifications.push({
 				id: id,
 				type: payload.type,
