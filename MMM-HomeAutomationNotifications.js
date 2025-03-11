@@ -21,7 +21,7 @@ Module.register("MMM-HomeAutomationNotifications", {
 			WARNING: "normal",
 			ERROR: "bright"
 		},
-		icons: {
+		symbols: {
 			INFO: "info",
 			WARNING: "exclamation",
 			ERROR: "exclamation-triangle"
@@ -113,22 +113,22 @@ Module.register("MMM-HomeAutomationNotifications", {
 			var row = document.createElement("tr");
 			row.classList.add("normal");
 
-			var iconCell = document.createElement("td");
-			iconCell.classList.add("small");
+			var symbolCell = document.createElement("td");
+			symbolCell.classList.add("small");
 
-			var icon = document.createElement("i");
-			if (this.config.icons.hasOwnProperty(this.notifications[i].type)) {
-				icon.classList.add("fa", "fa-fw", "fa-" + this.config.icons[this.notifications[i].type]);
+			var symbol = document.createElement("i");
+			if (this.config.symbols.hasOwnProperty(this.notifications[i].type)) {
+				symbol.classList.add("fa", "fa-fw", "fa-" + this.config.symbols[this.notifications[i].type]);
 			} else {
-				icon.classList.add("fa", "fa-fw", "fa-question");
+				symbol.classList.add("fa", "fa-fw", "fa-question");
 			}
 			if (this.config.types.hasOwnProperty(this.notifications[i].type)) {
-				icon.classList.add(this.config.types[this.notifications[i].type]);
+				symbol.classList.add(this.config.types[this.notifications[i].type]);
 			}
 
-			iconCell.appendChild(icon);
+			symbolCell.appendChild(symbol);
 
-			row.appendChild(iconCell);
+			row.appendChild(symbolCell);
 
 			var caller =  document.createElement("td");
 			caller.innerHTML = " " + this.notifications[i].message;
