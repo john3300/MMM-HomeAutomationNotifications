@@ -59,7 +59,7 @@ The following properties can be configured:
 |Option|Description|
 |--|--|
 |`max`|The maximum number of notifications to display.<br/><br/>**Default value:** `5`|
-|`duration`|How long each notification should be displayed. (Minutes)<br/><br/>**Default value:** `30`|
+|`duration`|How long each notification should be displayed. (Minutes). -1 for infinite notifications.<br/><br/>**Default value:** `30`|
 |`animationSpeed`|Speed of the update animation. (Milliseconds)<br/><br/>**Possible values:** `0` - `5000`<br/>**Default value:** `2500` (2.5 seconds)|
 |`coloredText`|If this property is set to true, an individual text color can be set for each type.<br/><br/>**Default value:** `false`|
 |`coloredSymbol`|If this property is set to true, an individual symbol color can be set for each type.<br/><br/>**Default value:** `false`|

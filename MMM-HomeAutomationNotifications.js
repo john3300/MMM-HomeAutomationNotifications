@@ -55,10 +55,13 @@ Module.register("MMM-HomeAutomationNotifications", {
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;
 		var timestamp = moment();
-		var duration = moment.duration(this.config.duration, "m");
+		var duration = this.config.duration === -1 ? moment.duration(100, "y") : moment.duration(this.config.duration, "m");
 
 		if (notification === "HOME_AUTOMATION_NOTIFICATION") {
-			var id = self.generateId();
+			const id = payload.id ? payload.id : self.generateId();
+			if (payload.id) {
+				self.id = payload.id + 1
+			}
 
 			self.notifications.push({
 				id: id,
