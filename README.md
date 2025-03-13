@@ -61,4 +61,9 @@ The following properties can be configured:
 |`max`|The maximum number of notifications to display.<br/><br/>**Default value:** `5`|
 |`duration`|How long each notification should be displayed. (Minutes)<br/><br/>**Default value:** `30`|
 |`animationSpeed`|Speed of the update animation. (Milliseconds)<br/><br/>**Possible values:** `0` - `5000`<br/>**Default value:** `2500` (2.5 seconds)|
+|`coloredText`|If this property is set to true, an individual text color can be set for each type.<br/><br/>**Default value:** `false`|
+|`coloredSymbol`|If this property is set to true, an individual symbol color can be set for each type.<br/><br/>**Default value:** `false`|
+|`infoColor`|The font and symbol color for a message of type `INFO`. This property should be set if the config is set to `coloredText: true` or `coloredSymbol: true`.<br/><br/>**Possible values:** HEX, RGB or RGBA values (#efefef, rgb(242,242,242), rgba(242,242,242,0.5)).<br/>**Default value:** `#666`|
+|`warningColor`|The font and symbol color of a message of type `WARNING`. This property should be set if the config is set to `coloredText: true` or `coloredSymbol: true`.<br/><br/>**Possible values:** HEX, RGB or RGBA values (#efefef, rgb(242,242,242), rgba(242,242,242,0.5)).<br/>**Default value:** `#999`|
+|`errorColor`|The font and symbol color of a message of type `ERROR`. This property should be set if the config is set to `coloredText: true` or `coloredSymbol: true`.<br/><br/>**Possible values:** HEX, RGB or RGBA values (#efefef, rgb(243,242,242), rgba(242,242,242,0.5)).<br/>**Default value:** `#fff`|
 

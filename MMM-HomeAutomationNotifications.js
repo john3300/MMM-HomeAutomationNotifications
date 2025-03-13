@@ -16,6 +16,11 @@ Module.register("MMM-HomeAutomationNotifications", {
 		max: 5,
 		duration: 30,
 		animationSpeed: 2500,
+		coloredSymbol: false,
+		coloredText: false,
+		infoColor: "#666",
+		warningColor: "#999",
+		errorColor: "#fff",
 		types: {
 			INFO: "dimmed",
 			WARNING: "normal",
@@ -125,6 +130,9 @@ Module.register("MMM-HomeAutomationNotifications", {
 			if (this.config.types.hasOwnProperty(this.notifications[i].type)) {
 				symbol.classList.add(this.config.types[this.notifications[i].type]);
 			}
+			if (this.config.coloredSymbol) {
+				symbol.style.cssText = "color:" + this.getTypeColor(this.notifications[i].type);
+			}
 
 			symbolCell.appendChild(symbol);
 
@@ -135,6 +143,9 @@ Module.register("MMM-HomeAutomationNotifications", {
 			caller.classList.add("title", "small", "align-left");
 			if (this.config.types.hasOwnProperty(this.notifications[i].type)){
 				caller.classList.add(this.config.types[this.notifications[i].type]);
+			}
+			if (this.config.coloredText) {
+				caller.style.cssText = "color:" + this.getTypeColor(this.notifications[i].type);
 			}
 			row.appendChild(caller);
 
@@ -149,6 +160,22 @@ Module.register("MMM-HomeAutomationNotifications", {
 		wrapper.appendChild(table);
 
 		return wrapper;
-	}
+	},
 
+	getTypeColor: function(type) {
+		var color;
+
+		switch (type) {
+			case "INFO":
+				color = this.config.infoColor;
+				break;
+			case "WARNING":
+				color = this.config.warningColor;
+				break;
+			case "ERROR":
+				color = this.config.errorColor;
+		}
+
+		return color;
+	}
 });
