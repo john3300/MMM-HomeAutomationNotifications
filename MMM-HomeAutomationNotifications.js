@@ -83,9 +83,9 @@ Module.register("MMM-HomeAutomationNotifications", {
 				expiration: timestamp.add(duration).toISOString()
 			};
 		} else if (notification === "HOME_AUTOMATION_NOTIFICATION_DELETE") {
-			for (i = self.notifications.length - 1; i >= 0; i--) {
-				if (self.notifications[i].id == payload.id) {
-					self.notifications.splice(i, 1);
+			for (var j = self.notifications.length - 1; j >= 0; j--) {
+				if (self.notifications[j].id == payload.id) {
+					self.notifications.splice(j, 1);
 				}
 			}
 		}
